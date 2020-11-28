@@ -1,8 +1,11 @@
 package com.capg.employeepayrollapp.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.capg.employeepayrollapp.employeedto.EmployeePayrollDTO;
@@ -39,6 +42,10 @@ public class EmployeeServiceIMPL implements IEmployeeService{
 	@Transactional
 	public void deleteEmployeeById(Long id) {
 		employeeRepository.deleteById(id);
+	}
+	@Override
+	public List<Employee> getAllEmployees() {
+		return employeeRepository.findAll();
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.capg.employeepayrollapp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +49,10 @@ public class EmployeePayrollController {
 	public ResponseEntity<String> deleteEmployeeById(@PathVariable("empId") Long empId){
 		empService.deleteEmployeeById(empId);
 		return new ResponseEntity<String>("Deleted the employee with id : "+empId, HttpStatus.OK);
+	}
+	@GetMapping("/getall")
+	public ResponseEntity<List<Employee>> getAllEmployees(){
+		List employeesList = empService.getAllEmployees();
+		return new ResponseEntity<>(employeesList, HttpStatus.OK);
 	}
 }
